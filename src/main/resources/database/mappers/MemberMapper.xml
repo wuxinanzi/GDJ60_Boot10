@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iu.base.member.MemberDAO">
+  	
+  	<insert id="setMemberAdd" parameterType="MemberVO">
+  		INSERT INTO MEMBER
+  		VALUES (#{username}, #{password}, #{name}, #{email}, #{birth}, 1, now())
+  	</insert>
+  	
+  	<insert id="setMemberRoleAdd" parameterType="MemberVO">
+  		INSERT INTO MEMBER_ROLE
+  		VALUES (#{username}, 3)
+  	</insert>
+  	
+  	<select id="getMemberLogin" parameterType="MemberVO" resultMap="getMemberLoginResult">
+  		SELECT *
+			FROM 
+			MEMBER
+			INNER JOIN
+			MEMBER_ROLE 
+			USING(username)
+			INNER JOIN 
+			ROLE
+			USING(NUM)
+		WHERE USERNAME = #{username}
+  	</select>
+  	
+  	<resultMap type="MemberVO" id="getMemberLoginResult">
+  		<id column="USERNAME" property="username"/>
+  		<result column="PASSWORD" property="password"/>
+  		<result column="NAME" property="name"/>
+  		<result column="EMAIL" property="email"/>
+  		<result column="BIRTH" property="birth"/>
+  		<result column="ENABLED" property="enabled"/>
+  		
+  		<collection property="roleVOs" javaType="List" ofType="RoleVO">
+  			<id column="NUM" property="num"/>
+  			<result column="ROLENAME" property="roleName"/>
+  		</collection>
+  	</resultMap>
+  	
+  	<select id="idDuplicateCheck" resultType="MemberVO" parameterType="MemberVO">
+  		SELECT USERNAME FROM MEMBER WHERE USERNAME = #{username}
+  	</select>
+  	
+  	<select id="getMembers" resultType="MemberVO">
+  		SELECT * FROM MEMBER
+  	</select>
+  	
+  	<update id="getMemberLogout" parameterType="MemberVO">
+  		UPDATE MEMBER SET LASTTIME = now()
+  		WHERE USERNAME = #{username}
+  	</update>
+  	
+  	<update id="setEnabled">
+	  	<![CDATA[
+	  		UPDATE MEMBER SET ENABLED = 0
+			WHERE LASTTIME <= now() - INTERVAL 3 DAY
+	  	]]>
+  	</update>
+  	
+  	<select id="getBirth" resultType="MemberVO">
+  		SELECT NAME, EMAIL 
+		FROM MEMBER
+		WHERE MONTH(BIRTH) = MONTH(NOW())
+		AND DAY(BIRTH) = DAY(NOW())
+  	</select>
+  	
+  </mapper>
