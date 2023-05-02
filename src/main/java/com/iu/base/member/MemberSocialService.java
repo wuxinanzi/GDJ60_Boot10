@@ -24,17 +24,23 @@ public class MemberSocialService extends DefaultOAuth2UserService {
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+		// TODO Auto-generated method stub
+		// kakao에서 로그인 처리 후 실행
+		// 
+		log.error("{} ::: social", userRequest.getAccessToken());
 		
-		log.error("=============== {} ============", userRequest.getAccessToken());
+		ClientRegistration registration=userRequest.getClientRegistration();
 		
-		ClientRegistration registration = userRequest.getClientRegistration();
+		log.error("{} ::: ", registration.getRegistrationId());
+		log.error("{} ::: ", registration.getScopes());
+		log.error("{} ::: ", registration.getClientName());
+		log.error("{} ::: ", registration.getClientId());
+		OAuth2User user= super.loadUser(userRequest);
+		log.error("{} ::: ", user.getName());
 		
-		log.error("================ {} ===============", registration.getRegistrationId());
-		OAuth2User user = super.loadUser(userRequest);
-		log.error("================ {} ===============", user.getName());
-
 		return this.socialJoinCheck(userRequest);
 	}
+	
 	private OAuth2User socialJoinCheck(OAuth2UserRequest auth2UserRequest) {
 		// DB에서 조회 후 회원 추가 또는 회원정보(Role) 조회
 		// kakao에서 받은 정보를 MemberVO로 변경
@@ -49,6 +55,7 @@ public class MemberSocialService extends DefaultOAuth2UserService {
 			log.error("Key : {}", key);
 			log.error("Value : {}", map.get(key));
 		}
+		
 		HashMap<String, Object> m = (HashMap<String, Object>) map.get("properties");
 		
 		MemberVO memberVO = new MemberVO();

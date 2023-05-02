@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,14 +11,14 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Modern Business - Start Bootstrap Template</title>
-        <!-- css, favicon -->
-        <c:import url="./temp/style.jsp"></c:import>
-        <!-- css, favicon -->
+		<!-- css favicon -->
+		<c:import url="./temp/style.jsp"></c:import>
+		<!-- css favicon -->
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
-            <c:import url="./temp/header.jsp"></c:import>
+			<c:import url="./temp/header.jsp"></c:import>
             <!-- Header-->
             <header class="bg-dark py-5">
                 <div class="container px-5">
@@ -42,21 +42,29 @@
                 <div class="container px-5 my-5">
                     <div class="row gx-5">
                         <div class="col-lg-4 mb-5 mb-lg-0">
+                        
+                        	<!-- message -->
+                        
                         	<h1>
-                        	
-                        	
-                        		<%-- <c:if test="${not empty member}"> --%>
-                        			<spring:message code="loginSuccess" text="없는 message" arguments="${member.username},${member.name}" argumentSeparator=","></spring:message>
-                        		<%-- </c:if> --%>
+                        		
+                        		<spring:message code="loginSuccess" text="없는 message" arguments="${member.username},${member.name}" argumentSeparator="," ></spring:message>
                         		<sec:authorize access="isAuthenticated()">
-                        			로그인 성공
-                        			<sec:authentication property="name"/>
+                        			로그인 성공 : 
+                        		<sec:authentication property="name"/>
                         		</sec:authorize>
                         		<sec:authorize access="!isAuthenticated()">로그인 전</sec:authorize>
                         		
                         		
                         	</h1>
+                        	<form action="https://kauth.kakao.com/oauth/logout" method="post" novalidate="true">
+                                <input name="stsc" value="uOwowQHsz4xQad4gRDRZKLqEoCPvOkimeeBDuyoWybEQEXzzuNuQGRiZHVCu6EvYjv0pXcSMdJpajgCuxPY8nd5A9oTqzJIdCZ7WJPc1V5Oc4X82mXmZuWAM_eBlqnBGD7k7JIJ6V_KtY7JD7p9kbKnd0wnth6FOyd7e5NoYtpQ" type="hidden">
+                                <input name="csts" value="yWGV4uIKMX0eJkQInBxleEioztmE0jE7SPvhDADEFWS9zkD7x1RerA1E82kRUBQ0Z020S6z4h0f8R9NwsSvtTR52KqQwRW9f44y8kyK8l31J59wdnSBLpZmo0USOHJTmBk8Dw4JmYYV-3-HmIpyTfUdBjnhDcw26zK8WwOMsiETWhcwf0SUKlcuJJdGTzIy6XddRBKUz3TR8TANArIxobpJ84KeahQsf1I3ILDGDQYsW8p0-tp5zzNS4XDi25zr9tC5yD6OkgZPjqkz_MwNENOpZ-2_buZnsaDPkqhkpts1eBeXozHAjkR_VN3Kc8a8J" type="hidden">
+                                <button class="btn_g" type="submit" name="logout_with_kakao" value="false">이 서비스만 로그아웃</button>
+                                <button class="btn_g" type="submit" name="logout_with_kakao" value="true">카카오계정과 함께 로그아웃</button>
+                            </form>
+                        	<!-- message -->
                         	<h2 class="fw-bolder mb-0">A better way to start building.</h2>
+                     
                         </div>
                         <div class="col-lg-8">
                             <div class="row gx-5 row-cols-1 row-cols-md-2">
@@ -200,8 +208,8 @@
                 </div>
             </section>
         </main>
-        <!-- Footer -->
-        <c:import url="./temp/footer.jsp"></c:import>
-        <!-- Footer -->
+	<!-- Footer 적용  -->
+	<c:import url="./temp/footer.jsp"></c:import>
+	<!-- Footer 끝 -->
     </body>
 </html>

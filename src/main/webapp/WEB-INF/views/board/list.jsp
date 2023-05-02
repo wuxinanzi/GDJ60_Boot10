@@ -11,14 +11,19 @@
 <meta name="author" content="" />
 <title>Modern Business - Start Bootstrap Template</title>
 <!-- css, favicon -->
+
 <c:import url="../temp/style.jsp"></c:import>
 <!-- css, favicon -->
+<link href="/css/boardSidebar.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
 		<!-- Navigation-->
         <c:import url="../temp/header.jsp"></c:import>
         <!-- Header-->
+        <div id="sidebar" class="card my-3">
+        <a href="https://www.naver.com" class="naver-link">네이버 바로가기</a>
+        </div>
         <section class="bg-light py-5">
         	<div class="container px-5 my-5">
         		<div class="text-center mb-5">
