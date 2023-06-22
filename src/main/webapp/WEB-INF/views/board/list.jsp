@@ -111,9 +111,9 @@
         	</div>
         </section>
         
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
+        
         	<a class="btn btn-primary" href="./add">글쓰기</a>
-        </sec:authorize>
+        
 	</main>
 	
 	<!-- Footer -->

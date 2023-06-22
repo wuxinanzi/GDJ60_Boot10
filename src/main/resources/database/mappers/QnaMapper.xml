@@ -20,7 +20,7 @@
   	</sql>
   	
   	<select id="getTotalCount" resultType="Long" parameterType="Pager">
-  		SELECT COUNT(NUM) FROM NOTICE
+  		SELECT COUNT(NUM) FROM QNA
 		<include refid="search"></include>
   	</select>
   

@@ -58,7 +58,7 @@ public class SecurityConfig {
 				//URL과 권한 매칭
 				.antMatchers("/").permitAll()
 				.antMatchers("/member/join").permitAll()
-				.antMatchers("/notice/add").hasRole("MEMBER")
+				/* .antMatchers("/notice/add").hasRole("MEMBER") */
 				.antMatchers("/notice/update").hasRole("ADMIN")
 				.antMatchers("/notice/delete").hasRole("ADMIN")
 				.antMatchers("/notice/*").permitAll()
