@@ -36,7 +36,7 @@ public class NoticeController {
 		return "notice";
 	}
 	
-	@GetMapping(value = "list")
+	@GetMapping("list")
 	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		log.info("search : {}", pager.getSearch());
@@ -50,7 +50,7 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@GetMapping(value = "add")
+	@GetMapping("add")
 	public ModelAndView setInsert(@ModelAttribute BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/add");
@@ -58,7 +58,7 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@PostMapping(value = "add")
+	@PostMapping("add")
 	public ModelAndView setInsert(@Valid BoardVO boardVO, BindingResult bindingResult, MultipartFile [] boardFiles) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -75,7 +75,7 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@GetMapping(value = "detail")
+	@GetMapping("detail")
 	public ModelAndView getDetail(NoticeVO noticeVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -87,7 +87,7 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@GetMapping(value = "fileDown")
+	@GetMapping("fileDown")
 	public ModelAndView getFileDown(BoardFileVO boardFileVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -99,7 +99,7 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@GetMapping(value = "delete")
+	@GetMapping("delete")
 	public ModelAndView setDelete(BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		

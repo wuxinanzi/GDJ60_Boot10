@@ -18,7 +18,7 @@ import com.iu.base.board.BoardVO;
 import com.iu.base.util.Pager;
 
 @Controller
-@RequestMapping(value = "/qna/*")
+@RequestMapping("/qna/*")
 public class QnaController {
 
 	@Autowired
@@ -29,7 +29,7 @@ public class QnaController {
 		return "qna";
 	}
 	
-	@GetMapping(value = "list")
+	@GetMapping("list")
 	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -41,7 +41,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@GetMapping(value = "detail")
+	@GetMapping("detail")
 	public ModelAndView getDetail(QnaVO qnaVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -53,7 +53,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@GetMapping(value = "add")
+	@GetMapping("add")
 	public ModelAndView setInsert(@ModelAttribute BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -62,7 +62,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@PostMapping(value = "add")
+	@PostMapping("add")
 	public ModelAndView setInsert(QnaVO qnaVO, MultipartFile [] boardFiles) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -73,7 +73,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@GetMapping(value = "fileDown")
+	@GetMapping("fileDown")
 	public ModelAndView getFileDown(BoardFileVO boardFileVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
