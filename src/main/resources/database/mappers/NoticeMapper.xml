@@ -77,6 +77,11 @@
   	<select id="getFileDetail" parameterType="BoardFileVO" resultType="BoardFileVO">
   		SELECT * FROM NOTICEFILES WHERE FILENUM = #{fileNum}
   	</select>
+  	
+  	<update id="setHit" parameterType="BoardVO">
+  		UPDATE NOTICE SET HIT = #{hit} + 1
+		WHERE NUM = #{num}
+  	</update>
   
   </mapper>
 

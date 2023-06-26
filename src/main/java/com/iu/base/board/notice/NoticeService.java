@@ -88,4 +88,8 @@ public class NoticeService implements BoardService{
 	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception {
 		return noticeDAO.getFileDetail(boardFileVO);
 	}
+	
+	public int setHit(BoardVO boardVO)throws Exception{
+		return noticeDAO.setHit(boardVO);
+	}
 }

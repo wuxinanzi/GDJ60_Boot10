@@ -32,4 +32,6 @@ public interface BoardDAO {
 	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception;
 	
 	public int setRef(QnaVO qnaVO) throws Exception;
+	
+	public int setHit(BoardVO boardVO) throws Exception;
 }
